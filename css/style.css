@@ -1,0 +1,33 @@
+.treeStyle {
+    border-width: 3px; 
+    border-color: #8f8f8f;
+    border-style: ridge;
+    height: 100%;
+}
+
+.treeStyle > .top{
+    border-width: 0 0 3px 0; 
+    border-color: #8f8f8f;
+    border-style: ridge;
+}
+
+.contentStyle {
+    position: fixed;
+    border-width: 3px; 
+    border-color: #8f8f8f;
+    border-style: ridge;
+}
+
+.contentStyle > img {
+    max-width: 600px;
+}
+
+.container-fluid {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.jstree-anchor {
+    width: 90%;
+    text-overflow: ellipsis;
+}
