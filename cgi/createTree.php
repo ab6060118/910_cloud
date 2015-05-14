@@ -3,8 +3,6 @@
     $idName="node_";
     $idCounter="0";
     $tree=Array();
-    $jsonFile=fopen("../tree.json", "w");
-
 
     initalTree($tree, $rootPath, $idCounter, $idName);
 
@@ -14,8 +12,7 @@
         findAllChild($tree[$i], $rootPath, $idCounter, $idName, $tree);
     }
 
-    fwrite($jsonFile, json_encode($tree));
-    fclose($jsonFile);
+    echo json_encode($tree);
 
     function initalTree(&$tree, $rootPath, &$idCounter, $idName) {
         $dirArr=Array();
@@ -35,7 +32,6 @@
 
     function findAllChild(&$node, $path, &$idCounter, $idName, &$treeRoot) {
         $currentPath=$path."/".$node["text"];
-        echo $currentPath, "\n";
 
         if(is_dir($currentPath)) {
             $dirArr=Array();
@@ -65,9 +61,8 @@
                     $node["icon"]="jstree-video";
                     break;
                 case 'jpg':
-                    $node["icon"]="jstree-image";
-                    break;
                 case 'png':
+                case 'gif':
                     $node["icon"]="jstree-image";
                     break;
                 default:

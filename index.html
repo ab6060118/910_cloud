@@ -4,29 +4,32 @@
     <meta charset="UTF-8">
     <title></title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link rel="stylesheet" href="css/default/style.css" />
 	<link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div class="container">
-        <div class="content">
-            <div id="ajaxTree" class=""></div>
+    <div class="container-fluid">
+        <div class="treeStyle col-md-6">
+            <div class="top">
+                <ol>
+                    <li><font color="red">重新整理非常吃系統效能，暫時想不到到更好的寫法，請不要常常重新整理。</font></li>
+                    <li><font color="red">盡量不要線上觀看，並且下載請在夜深人靜之時，我不希望我打的時候LOL大LAG。</font></li>
+                    <li><font color="red">請不要在旁邊有人的時後使用這張網頁。</font></li>
+                    <li>如果網頁壞掉了，請找刀疤幫你解決。</li>
+                    <li>想要看什麼或是想要遊戲，請密刀疤幫你下載。</li>
+                    <li>如果你有想到什麼好點子可以讓這張網頁更好，都可以提出來。</li>
+                </ol>
+            </div>
+            <div id="ajaxTree"></div>
+        </div>
+
+        <div id="rightContent" class="contentStyle col-md-offset-6">
+            <img id="contentImg" src="" />
         </div>
     </div>
-
-    <div id="myModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                </div>
-
-                <div class="modal-body">
-                    <img id="modalImg" style="margin:auto; width:100%" src="" />
-                </div> 
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="js/vendor/jstree.min.js"></script>
@@ -34,13 +37,36 @@
 
     <script>
         $(document).ready(function() {
-            $('#ajaxTree').jstree({
-                'core' : {
-                    'data' : {
-                        "url" : "./tree.json",
-                        "dataType" : "json" // needed only if you do not supply JSON headers
+            $.get('./cgi/createTree.php', function(data) {
+                $('#ajaxTree').jstree({
+                    'core' : {
+                        'data' : JSON.parse(data)
+                    }
+                });
+            });
+
+            $('#rightContent').hide();
+
+
+            $('#ajaxTree').on('hover_node.jstree', function(e, data) {
+                if(data.node.a_attr.href != undefined) {
+                    var type=data.node.a_attr.fileType;
+                    var link=data.node.a_attr.href;
+                    switch(type) {
+                        case 'jpg':
+                        case 'png':
+                        case 'gif':
+                            $('#rightContent').show();
+                            $('#contentImg').attr("src", link);
+                            break;
+                        default:
+                            break;
                     }
                 }
+            });
+
+            $('#ajaxTree').on('dehover_node.jstree', function(e, data) {
+                    $('#rightContent').hide();
             });
 
             $('#ajaxTree').on('select_node.jstree', function(e, data) {
@@ -48,11 +74,6 @@
                     var type=data.node.a_attr.fileType;
                     var link=data.node.a_attr.href;
                     switch(type) {
-                        case 'jpg':
-                        case 'png':
-                            $('#myModal').modal('show');
-                            $('#modalImg').attr("src", link);
-                            break;
                         case 'mp4':
                         case 'wmv':
                         case 'mkv':
