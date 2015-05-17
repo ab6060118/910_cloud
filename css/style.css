@@ -6,6 +6,7 @@
 }
 
 .treeStyle > .top{
+    margin-top: 8px;
     border-width: 0 0 3px 0; 
     border-color: #8f8f8f;
     border-style: ridge;
