@@ -37,6 +37,8 @@
 
     <script>
         $(document).ready(function() {
+            $.get("cgi/connectLog.php", function() {});
+
             $('#ajaxTree').jstree({
                 'core' : {
                     // 'data' : JSON.parse(data)
