@@ -1,7 +1,7 @@
 <?php
     date_default_timezone_set("Asia/Taipei");
     $logPath="/home/pi/web/910_cloud/connect.log";
-    $time=date("Y-m-d GG:i:s");
+    $time=date("Y-m-d H:i:s");
     if(isset($_GET['fileName'])) $fileName=$_GET["fileName"];
 
     if (!empty($_SERVER['HTTP_CLIENT_IP']))
