@@ -14,6 +14,7 @@
     <div class="container-fluid">
         <div class="treeStyle col-md-6">
             <div class="top">
+                <button id="createTree" class="btn btn-info" style="margin:0 0 5px 40px">Refresh the file tree</button>
                 <ol>
                     <li><font color="red">File Tree 每天凌晨12點會更新一次，所以不再是重新整理就會更新一次。</font></li>
                     <li><font color="red">盡量不要線上觀看，並且下載請在夜深人靜之時，我不希望我打的時候LOL大LAG。</font></li>
@@ -52,6 +53,12 @@
             });
 
             $('#rightContent').hide();
+
+            $('#createTree').on('click', function() {
+                $.get('cgi/createTree.php', function() {
+                    location.reload();
+                });
+            });
 
             $('#ajaxTree').on('hover_node.jstree', function(e, data) {
                 if(data.node.a_attr.fileType != undefined) {
