@@ -33,72 +33,11 @@
         </div>
     </div>
 
+    <div class="modal"></div>
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="js/vendor/jstree.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $.get("cgi/connectLog.php", function() {});
-
-            $('#ajaxTree').jstree({
-                'core' : {
-                    // 'data' : JSON.parse(data)
-                    'data': {
-                        "url": "./tree.json",
-                        "dataType": "json"
-                    }
-                    
-                }
-            });
-
-            $('#rightContent').hide();
-
-            $('#createTree').on('click', function() {
-                $.get('cgi/createTree.php', function() {
-                    location.reload();
-                });
-            });
-
-            $('#ajaxTree').on('hover_node.jstree', function(e, data) {
-                if(data.node.a_attr.fileType != undefined) {
-                    var type=data.node.a_attr.fileType;
-                    var link=data.node.a_attr.href;
-                    switch(type) {
-                        case 'jpg':
-                        case 'png':
-                        case 'gif':
-                            $('#rightContent').show();
-                            $('#contentImg').attr("src", link);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            });
-
-            $('#ajaxTree').on('dehover_node.jstree', function(e, data) {
-                    $('#rightContent').hide();
-            });
-
-            $('#ajaxTree').on('select_node.jstree', function(e, data) {
-                if(data.node.a_attr.fileType != undefined) {
-                    var type=data.node.a_attr.fileType;
-                    var link=data.node.a_attr.href;
-                    var fileName=data.node.text;
-                    switch(type) {
-                        case 'jpg':
-                        case 'png':
-                        case 'gif':
-                            break;
-                        default:
-                            $.get("cgi/connectLog.php", {"fileName":fileName}, function() {});
-                            window.open(link);
-                            break;
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
