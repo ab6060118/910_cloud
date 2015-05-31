@@ -53,18 +53,16 @@ $(document).ready(function() {
         if(data.node.a_attr.fileType != undefined) {
             var type=data.node.a_attr.fileType;
             var link=data.node.a_attr.href;
-            var fileName=data.node.text;
             switch(type) {
                 case 'jpg':
                 case 'png':
                 case 'gif':
                     break;
                 default:
-                    $.get("cgi/connectLog.php", {"fileName":fileName}, function() {});
+                    $.get("cgi/connectLog.php", {"fileName":link}, function() {});
                     window.open(link);
                     break;
             }
         }
     });
 });
-
