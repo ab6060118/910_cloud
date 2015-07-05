@@ -16,12 +16,13 @@
         <div class="treeStyle col-md-6">
             <div class="top">
                 <button id="createTree" class="btn btn-info" style="margin:0 0 5px 40px">Refresh the file tree</button>
+                <button id="modalShow" class="btn btn-success" style="margin:0 0 5px 40px">Wishing pound</button>
+                <button id="modalWishList" class="btn btn-warning" style="margin:0 0 5px 40px">Showing Wish list</button>
+                <button id="adminModal_Btn" class="btn btn-danger" style="margin:0 0 5px 40px">Admin</button>
                 <ol>
                     <li><font color="red">File Tree 每天凌晨12點會更新一次，所以不再是重新整理就會更新一次。</font></li>
-                    <li><font color="red">盡量不要線上觀看，並且下載請在夜深人靜之時，我不希望我打的時候LOL大LAG。</font></li>
-                    <li><font color="red">請不要在旁邊有人的時後使用這張網頁。</font></li>
+                    <li><font color="red">未分類到子資料夾的東西不保證完整，例如PLAN資料夾裡的東西可能不完整。</font></li>
                     <li>如果網頁壞掉了，請找刀疤幫你解決。</li>
-                    <li>想要看什麼或是想要遊戲，請密刀疤幫你下載。</li>
                     <li>如果你有想到什麼好點子可以讓這張網頁更好，都可以提出來。</li>
                     <li><a href="https://github.com/ab6060118/910_cloud" target="_blank">The Source Code of this web site.</a></li>
                 </ol>
@@ -34,7 +35,89 @@
         </div>
     </div>
 
-    <div class="modal"></div>
+    <div class="loadingModal"></div>
+
+    <div id="modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Wishing pound <font color="red">(尚未實做)</font></h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="url">url欄位，如果有網址可以提供參考請貼這裡。</label>
+                        <input type="text" class="form-control" id="url" placeholder="http://google.com/">
+                    </div>
+                    <div class="form-group">
+                        <label for="text">text，如果還有什麼想說的話寫在這裡。</label>
+                        <textarea class="form-control" rows="8" placeholder="text input" id="text"></textarea>
+                    </div>
+
+                    <div id="modalError" class="alert alert-danger" role="alert">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="modalSubmit" type="button" class="btn btn-primary">Send</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+    <div id="wishListModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Wish list<font color="red">(尚未實做)</font></h4>
+                </div>
+
+                <div class="modal-body">
+                    <table id="wishListTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="40px">Time</th>
+                                <th width="40px">ID</th>
+                                <th width="70px">Status</th>
+                                <th width="50px">Url</th>
+                                <th>Content</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adminModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Admin<font color="red">(尚未實做)</font></h4>
+                </div>
+
+                <div class="modal-body">
+                    <table id="wishListAdminTable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="40px">Time</th>
+                                <th width="40px">ID</th>
+                                <th width="70px">Status</th>
+                                <th width="50px">Url</th>
+                                <th>Content</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script src="js/vendor/jstree.min.js"></script>

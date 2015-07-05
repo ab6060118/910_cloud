@@ -34,6 +34,7 @@
 
     function findAllChild(&$node, $path, &$idCounter, $rootPath, &$treeRoot) {
         $currentPath=$path."/".$node["text"];
+        // echo $currentPath ,"\n";
 
         if(is_dir($currentPath)) {
             $dirArr=Array();
