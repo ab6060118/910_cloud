@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName 910
+AuthUserFile /home/pi/web/910_cloud/.passwd
+Require valid-user
