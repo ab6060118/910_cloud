@@ -20,7 +20,7 @@
         $wishNote = wishNote($text, $url, $ip);
     }
 
-    array_push($wishList, $wishNote);
+    $wishList[(string)$wishNote['id']] = $wishNote;
     file_put_contents($filePath, json_encode($wishList, JSON_PRETTY_PRINT));
 
     function wishNote($text, $url, $ip) {

@@ -82,7 +82,7 @@ $(document).ready(function() {
         var url = $('#url').val();
         if(!text) {
             $('#text').focus();
-            $('#modalError').text('Text field id required.');
+            $('#modalError').text('Text field is required.');
             $('#modalError').show('1000');
         }
         else if(url) {
@@ -130,7 +130,6 @@ $(document).ready(function() {
                 row += '<td>'+data.text+'</td>';
                 row += '</tr>';
                 $('#wishListTable > tbody').append(row);
-                console.log(data);
             })
         })
         .done(function() {
@@ -142,12 +141,8 @@ $(document).ready(function() {
         $('#wishListTable > tbody').empty();
     });
 
-    /*
-    * admin wish list modal operation
-    */
-
-    $('#adminModal_Btn').on('click', function() {
-        $('#adminModal').modal('show');
+    $('#adminDashboard_btn').on('click', function() {
+        window.open('admin');
     });
 
     function dataHandler(data) {
@@ -156,7 +151,7 @@ $(document).ready(function() {
                 data.status = '<span class="label label-default">Unconfirm</span>';
                 break;
             case 1:
-                data.status = '<span class="label label-primary">Downloading</span>';
+                data.status = '<span class="label label-primary">In prograssing</span>';
                 break;
             case 2:
                 data.status = '<span class="label label-success">Complete</span>';

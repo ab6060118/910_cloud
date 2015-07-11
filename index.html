@@ -15,10 +15,10 @@
     <div class="container-fluid">
         <div class="treeStyle col-md-6">
             <div class="top">
-                <button id="createTree" class="btn btn-info" style="margin:0 0 5px 40px">Refresh the file tree</button>
+                <button id="createTree" class="btn btn-info disabled" style="margin:0 0 5px 40px">Refresh the file tree</button>
                 <button id="modalShow" class="btn btn-success" style="margin:0 0 5px 40px">Wishing pound</button>
                 <button id="modalWishList" class="btn btn-warning" style="margin:0 0 5px 40px">Showing Wish list</button>
-                <button id="adminModal_Btn" class="btn btn-danger" style="margin:0 0 5px 40px">Admin</button>
+                <button id="adminDashboard_btn" class="btn btn-danger" style="margin:0 0 5px 40px">Admin dashboard</button>
                 <ol>
                     <li><font color="red">File Tree 每天凌晨12點會更新一次，所以不再是重新整理就會更新一次。</font></li>
                     <li><font color="red">未分類到子資料夾的東西不保證完整，例如PLAN資料夾裡的東西可能不完整。</font></li>
@@ -42,7 +42,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Wishing pound <font color="red">(尚未實做)</font></h4>
+                    <h4 class="modal-title">Wishing pound</h4>
                 </div>
 
                 <div class="modal-body">
@@ -72,37 +72,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Wish list<font color="red">(尚未實做)</font></h4>
+                    <h4 class="modal-title">Wish list</h4>
                 </div>
 
                 <div class="modal-body">
                     <table id="wishListTable" class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th width="40px">Time</th>
-                                <th width="40px">ID</th>
-                                <th width="70px">Status</th>
-                                <th width="50px">Url</th>
-                                <th>Content</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="adminModal" class="modal fade">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Admin<font color="red">(尚未實做)</font></h4>
-                </div>
-
-                <div class="modal-body">
-                    <table id="wishListAdminTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th width="40px">Time</th>
