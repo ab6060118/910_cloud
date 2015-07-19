@@ -25,9 +25,6 @@ $(document).ready(function() {
             url: '../cgi/updateStatus.php',
             data: {'id': $(this).data('node'), 'status': $(this).val()},
             method: 'POST',
-            success: function(data){
-                console.log(data);
-            },
         });
     });
 
@@ -51,6 +48,7 @@ $(document).ready(function() {
 
     $('#deleteModal').on('hidden.bs.modal', function (e) {
         $('#deleteModal .modal-body').empty();
+        $('#deleteModal #modalSubmit').off();
     });
 
     function dataHandler(data) {
