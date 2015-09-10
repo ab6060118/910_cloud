@@ -499,6 +499,9 @@
 .jstree-default .jstree-video {
   background: url("video.png") no-repeat;
 }
+.jstree-default .jstree-rar {
+  background: url("rar.png") no-repeat;
+}
 .jstree-default .jstree-image {
   background: url("image.png") no-repeat;
 }

@@ -24,7 +24,7 @@ $(document).ready(function() {
 
     $('#createTree').on('click', function() {
         // $('#ajaxTree').jstree('destroy');
-        $.get('cgi/createTree.php', function() {
+        $.get('cgi/newCreateTree.php', function() {
         })
         .done(function() {
             $('#ajaxTree').jstree('refresh');
