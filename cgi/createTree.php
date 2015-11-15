@@ -1,8 +1,10 @@
 <?php
-    $rootPath="/home/pi/web/910_cloud/share";
-    $idCounter="0";
-    $tree=Array();
-    $file=fopen("/home/pi/web/910_cloud/tree.json", "w");
+    $time_start = microtime(true);
+    $rootPath = "/home/pi/web/910_cloud/share";
+    $idCounter = 0;
+    $tree = Array();
+    $file = fopen("/home/pi/web/910_cloud/tree.json", "w");
+    $exception = ["..", "."];
 
     initalTree($tree, $rootPath, $idCounter);
 
@@ -15,6 +17,9 @@
     // echo json_encode($tree);
     fwrite($file, json_encode($tree));
     fclose($file);
+    $time_end = microtime(true);
+    $time = $time_end - $time_start;
+    echo "Process Time: {$time}";
 
     function initalTree(&$tree, $rootPath, &$idCounter) {
         $dirArr=Array();
@@ -24,7 +29,8 @@
 
         foreach($dirArr as $item) {
             $itemArr=array();
-            $itemArr["id"]="node_".$idCounter++;
+            //$itemArr["id"]="node_".$idCounter++;
+            $itemArr["id"]=$idCounter++;
             $itemArr["text"]=$item;
             $itemArr["parent"]="#";
 
@@ -34,7 +40,7 @@
 
     function findAllChild(&$node, $path, &$idCounter, $rootPath, &$treeRoot) {
         $currentPath=$path."/".$node["text"];
-        // echo $currentPath ,"\n";
+        echo $currentPath ,"\n";
 
         if(is_dir($currentPath)) {
             $dirArr=Array();
@@ -43,7 +49,8 @@
 
             foreach($dirArr as $item) {
                 $itemArr=array();
-                $itemArr["id"]="node_".$idCounter++;
+                // $itemArr["id"]="node_".$idCounter++;
+                $itemArr["id"]=$idCounter++;
                 $itemArr["text"]=$item;
                 $itemArr["parent"]=$node["id"];
 

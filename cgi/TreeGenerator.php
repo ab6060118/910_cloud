@@ -41,7 +41,7 @@ class TreeGenerator {
     private function findAllChild($id) {
         $node = $this->tree[$id];
         $currentPath = $this->rootPath . $node["text"];
-        $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($currentPath), RecursiveIteratorIterator::SELF_FIRST);
+        $objects = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($currentPath, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST);
 
         foreach($objects as $object) {
             unset($itemArr);
@@ -49,21 +49,16 @@ class TreeGenerator {
             preg_match("/.+(\/.+\/.+$)/", $object->getPath(), $path);
             preg_match("/.+(\/.+\/.+$)/", $object, $id);        
 
-            if(in_Array($fileName, $this->exception)) {
-                continue;
-            }
-
             $itemArr["id"] = $id[1];
             $itemArr["text"] = $fileName;
             $itemArr["parent"] = $path[1];
 
-            if($object->isDir()) {
-            }
-            else {
+            if(!$object->isDir()) {
                 $itemArr["a_attr"]["href"]="share/".substr($object, strlen($this->rootPath));
                 $fileType=strtolower($object->getExtension());
                 
                 $itemArr["a_attr"]["fileType"]=$fileType;
+
                 switch($fileType) {
                     case 'avi':
                     case 'wmv':
